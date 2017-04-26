@@ -21,7 +21,8 @@ function averageWordLength(words) {
 	for (var i = 0; i<words.length; i++) {
 		total += words[i].length;
 	}
-	$('.js-average-length').text(total / words.length + ' characters');
+	var num = (total / words.length).toFixed(2);
+	$('.js-average-length').text(num + ' characters');
 }
 
 $(function countAllTheThings() {

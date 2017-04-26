@@ -1,7 +1,5 @@
-// need to fix makeWords to remove punctuation
-
 function makeWords (str) {
-	return str.split(" ");
+	return str.toLowerCase().split(/[^a-z']+/).filter(Boolean);
 }
 
 function totalWords(words) {
@@ -11,7 +9,6 @@ function totalWords(words) {
 function uniqueWords(words) {
 	var uniqueList = [];
 	for (var i = 0; i<words.length; i++) {
-		console.log($.inArray(words[i], uniqueList))
 		if (($.inArray(words[i], uniqueList)) === -1) {
 			uniqueList.push(words[i]);
 		}
@@ -27,11 +24,12 @@ function averageWordLength(words) {
 	$('.js-average-length').text(total / words.length + ' characters');
 }
 
-$(function() {
+$(function countAllTheThings() {
 	$('.js-text').submit(function(event) {
 		event.preventDefault();
 		$('.text-report').removeClass('hidden');
 		var words = makeWords($(this).find('textarea').val());
+		console.log(words); // REMOVE LATER
 		totalWords(words);
 		uniqueWords(words);
 		averageWordLength(words);
